@@ -1,33 +1,29 @@
 //React Imports------------->
-import { Component, useContext, createContext } from "react";
+import { Component, createContext } from "react";
 //Components----------->
 import Main from './MainComponent'
-import Login from './LoginComponent'
-import MasterCalendar from "./MasterCalendarComponent";
-import Reservation from './ReservationComponent'
-import Cart from './CartComponent'
 //Data--------------->
 import RESERVATIONS from './RESERVATIONS'
 import USERS from './USERS'
 //Dependencies----------------->
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-export const AuthContext = createContext('122')
+export const AuthContext = createContext(undefined)
 class App extends Component {
   constructor(props){
     super(props);
     this.state={
       users: [...USERS],
       reservations: [...RESERVATIONS],
-      // currentUser: {
-      //   username: 'joe',
-      //   cart:{
-      //     firstName: 'Joe',
-      //     lastName: 'Iannotta',
-      //     date: new Date(),
-      //     numLanes: 2
-      //   }
-      // },
+      currentUser: {
+        username: 'joe',
+        cart:{
+          firstName: 'Joe',
+          lastName: 'Iannotta',
+          date: new Date(),
+          numLanes: 2
+        }
+      },
       errors:{
         loginError: null,
         usernameError: null,
@@ -134,36 +130,6 @@ class App extends Component {
 
   render(){
 
-    const ConditionalRoutes = (props) =>{
-      if(!this.state.currentUser){
-        return(
-          <Routes>
-            <Route path="" element={
-            <Login
-              // onLoginBlur={props.onLoginBlur}
-              // loginAuthError={this.state.loginAuthError}
-              // loginUsernameError={this.state.loginUsernameError}
-              // loginPasswordError={this.state.loginPasswordError}
-              // validateLogin={this.validateLogin}
-            />
-
-          }></Route>
-          </Routes>
-          
-        )
-      } else {
-        return(
-          <Routes>
-            <Route path="/" element={
-              <MasterCalendar
-              reservations={this.state.reservations}
-              
-              ></MasterCalendar>
-            }></Route>
-          </Routes>
-        )
-      }
-    }
     return(
       <>
       <AuthContext.Provider value={this.state.currentUser}>
@@ -173,6 +139,7 @@ class App extends Component {
             validateLogin={this.validateLogin}
             loginUsernameError={this.state.loginUsernameError}
             loginPasswordError={this.state.loginPasswordError}
+            reservations={this.state.reservations}
           ></Main>
         </BrowserRouter>
       </AuthContext.Provider>

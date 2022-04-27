@@ -1,14 +1,20 @@
+import { useContext } from "react"
+import { AuthContext } from './App'
+
+
+
 const Cart = (props) =>{
     
+   const currentUser = useContext(AuthContext) 
 
-    if(props.cart){
+    if(currentUser.cart){
            return(
         <div>
             <h1>Cart</h1>
-            <p>Date: {props.cart.date.toString()}</p>
-            <p>First Name: {props.cart.firstName}</p>
-            <p>Last Name: {props.cart.lastName}</p>
-            <p>Number of Lanes: {props.cart.numLanes}</p>
+            <p>Date: {currentUser.cart.date.toString()}</p>
+            <p>First Name: {currentUser.cart.firstName}</p>
+            <p>Last Name: {currentUser.cart.lastName}</p>
+            <p>Number of Lanes: {currentUser.cart.numLanes}</p>
         </div>
         
     )

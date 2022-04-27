@@ -1,5 +1,6 @@
 import {Calendar} from 'react-calendar';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { AuthContext } from './App';
 
 const Reservation = (props)=>{
 
@@ -7,6 +8,7 @@ const Reservation = (props)=>{
     const [customerFirstName, changeFirstName] = useState(null)
     const [customerLastName, changeLastName] = useState(null)
     const [numLanes, changeNumLanes] = useState(null)
+    const currentUser = useContext(AuthContext)
 
     const onDateChange = (e) =>{
         selectDate(e)
@@ -55,7 +57,7 @@ const Reservation = (props)=>{
         <div>
             <h1>Reservation</h1>
             <Calendar onChange={(e)=>{onDateChange(e)}}></Calendar>
-            <p>Username: {props.currentUser.username}</p>
+            <p>Username: {currentUser.username}</p>
             <h5>Selected Date: {selectedDate ? selectedDate.toDateString() : 'please select a date'}</h5>
             <label>First Name:</label>
             <input onChange={(e)=>{onFirstNameChange(e)}}id="customer-name"></input>

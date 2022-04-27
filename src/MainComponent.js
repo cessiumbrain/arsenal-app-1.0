@@ -1,8 +1,10 @@
-import { Component, useContext } from "react";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {  useContext } from "react";
+import { NavLink, Routes, Route } from 'react-router-dom';
 import { AuthContext } from "./App";
 import Login from './LoginComponent';
 import MasterCalendar from "./MasterCalendarComponent";
+import Reservation from './ReservationComponent'
+import Cart from './CartComponent'
 
 
 const Main = (props) =>{
@@ -23,11 +25,28 @@ const Main = (props) =>{
     ) 
     } else {
         return(
+            <>
+            <nav>
+                <NavLink to="/">Calendar</NavLink>
+                <NavLink to="/reservation">Make a Reservation</NavLink>
+                <NavLink to="/cart">My Cart</NavLink>
+            </nav>
+            
             <Routes>
                 <Route path="/" element={
-                    <MasterCalendar></MasterCalendar>
+                    <MasterCalendar
+                        reservations={props.reservations}    
+                    ></MasterCalendar>
+                }></Route>
+                <Route path="/reservation" element={
+                    <Reservation></Reservation>
+                }></Route>
+                <Route path="/cart" element={
+                    <Cart></Cart>
                 }></Route>
             </Routes>
+            </>
+            
         )
     }
     
