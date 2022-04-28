@@ -4,45 +4,22 @@ import { AuthContext } from './App';
 
 const Reservation = (props)=>{
 
-    const [selectedDate, selectDate] = useState(null)
-    const [customerFirstName, changeFirstName] = useState(null)
-    const [customerLastName, changeLastName] = useState(null)
-    const [numLanes, changeNumLanes] = useState(null)
     const currentUser = useContext(AuthContext)
 
-    const onDateChange = (e) =>{
-        selectDate(e)
-    }
-
-    const onNumLanesChange = (e) =>{
-        changeNumLanes(e.target.value)
-        console.log('change')
-    }
-
-    const onFirstNameChange = (e) =>{
-        changeFirstName(e.target.value)
-        console.log(customerFirstName)
-    }
-
-    const onLastNameChange = (e) =>{
-        changeLastName(e.target.value)
-    }
+    console.log(props)
 
     //calculate number of lanes left---------------------------->
     let selectedDateReservations = []
     let totalLanes = 22;
         //if there is a selected date...
-    if(selectedDate) {
-        //log that date
-        console.log('you selected a date', selectedDate)
+    if(props.resFormSelectedDate) {
         //go through all the reservations that were passed in 
         props.reservations.map(res=>{
             console.log('reservation date',res.date)
             //if a reservation matches...
-            if(res.date.getTime()===selectedDate.getTime()){
+            if(res.date.getTime()===props.resFormSelectedDate.getTime()){
                 console.log('the date matches a current reservation')
                 selectedDateReservations.push(res)
-                console.log(selectedDateReservations)
             }
         })
     }
@@ -56,17 +33,19 @@ const Reservation = (props)=>{
     return(
         <div>
             <h1>Reservation</h1>
-            <Calendar onChange={(e)=>{onDateChange(e)}}></Calendar>
+            <Calendar onChange={(e)=>{props.onReservationDateChange(e)}}></Calendar>
             <p>Username: {currentUser.username}</p>
-            <h5>Selected Date: {selectedDate ? selectedDate.toDateString() : 'please select a date'}</h5>
+            <h5>Selected Date: {props.resFormSelectedDate ? props.resFormSelectedDate.toDateString() : 'please select a date'}</h5>
             <label>First Name:</label>
-            <input onChange={(e)=>{onFirstNameChange(e)}}id="customer-name"></input>
+            <input onBlur={(e)=>props.onReservationBlur(e)} id="customer-first-name"></input>
+            <small>{props.customerFirstNameError ? props.customerFirstNameError : ''}</small>
             <label>Last Name:</label>
-            <input onChange={(e)=>{onLastNameChange(e)}}></input>
+            <input onBlur={(e)=>{props.onReservationBlur(e)}} id="customer-last-name"></input>
+            <small>{props.customerLastNameError ? props.customerLastNameError : ''}</small>
             <p>Number of Lanes Left: {totalLanes}</p>
             <label>Number of Lanes</label>
-            <input max={totalLanes} type="number" onChange={(e)=>{onNumLanesChange(e)}}></input>
-            <button onClick={()=>{props.addToCart(customerFirstName, customerLastName, numLanes, selectedDate)}}>Add To Cart</button>
+            <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes"></input>
+            <button onClick={()=>{props.validateReservation()}}>Add To Cart</button>
         </div>
     )
 }

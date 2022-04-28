@@ -39,7 +39,19 @@ const Main = (props) =>{
                     ></MasterCalendar>
                 }></Route>
                 <Route path="/reservation" element={
-                    <Reservation></Reservation>
+                    <Reservation
+                    reservations={props.reservations}
+                    reservationForm={props.reservationForm}
+                    resFormSelectedDate={props.resFormSelectedDate}
+                    //Methods-------------------------->
+                    validateReservation={props.validateReservation}
+                    addToCart={props.addToCart}
+                    onReservationBlur={props.onReservationBlur}
+                    onReservationDateChange={props.onReservationDateChange}
+                    //Errors--------------------------->
+                    customerFirstNameError={props.customerFirstNameError}
+                    customerLastNameError={props.customerLastNameError}
+                    ></Reservation>
                 }></Route>
                 <Route path="/cart" element={
                     <Cart></Cart>
