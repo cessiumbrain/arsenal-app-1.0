@@ -40,8 +40,9 @@ const Main = (props) =>{
                 }></Route>
                 <Route path="/reservation" element={
                     <Reservation
+                    //Data---------------------------->
                     reservations={props.reservations}
-                    reservationForm={props.reservationForm}
+                    validCart={props.validCart}
                     resFormSelectedDate={props.resFormSelectedDate}
                     //Methods-------------------------->
                     validateReservation={props.validateReservation}
@@ -51,6 +52,8 @@ const Main = (props) =>{
                     //Errors--------------------------->
                     customerFirstNameError={props.customerFirstNameError}
                     customerLastNameError={props.customerLastNameError}
+                    resFormSelectedDateError={props.resFormSelectedDateError}
+                    resFormNumLanesError={props.resFormNumLanesError}
                     ></Reservation>
                 }></Route>
                 <Route path="/cart" element={

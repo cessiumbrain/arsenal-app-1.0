@@ -1,12 +1,12 @@
 import {Calendar} from 'react-calendar';
 import {useState, useEffect, useContext} from 'react'
 import { AuthContext } from './App';
+import { useNavigate, Navigate } from 'react-router-dom'
 
 const Reservation = (props)=>{
 
     const currentUser = useContext(AuthContext)
-
-    console.log(props)
+    const navigate = useNavigate('/cart')
 
     //calculate number of lanes left---------------------------->
     let selectedDateReservations = []
@@ -29,13 +29,25 @@ const Reservation = (props)=>{
         console.log(totalLanes)
     })
 
+    const NavigateToCart = ()=>{
+        if(props.validCart){
+            return(
+                <Navigate to="/cart"></Navigate>
+            )
+        } else {
+            return(
+                <></>
+            )
+        }
+    }
     //<-------------------------return statement---------------------->
     return(
         <div>
             <h1>Reservation</h1>
             <Calendar onChange={(e)=>{props.onReservationDateChange(e)}}></Calendar>
             <p>Username: {currentUser.username}</p>
-            <h5>Selected Date: {props.resFormSelectedDate ? props.resFormSelectedDate.toDateString() : 'please select a date'}</h5>
+            <h5>Selected Date: {props.resFormSelectedDate ? props.resFormSelectedDate.toString() : ''}</h5>
+            <small>{props.resFormSelectedDateError ? props.resFormSelectedDateError : ''}</small>
             <label>First Name:</label>
             <input onBlur={(e)=>props.onReservationBlur(e)} id="customer-first-name"></input>
             <small>{props.customerFirstNameError ? props.customerFirstNameError : ''}</small>
@@ -45,7 +57,11 @@ const Reservation = (props)=>{
             <p>Number of Lanes Left: {totalLanes}</p>
             <label>Number of Lanes</label>
             <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes"></input>
-            <button onClick={()=>{props.validateReservation()}}>Add To Cart</button>
+            <small>{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
+            <button onClick={()=>{
+                props.validateReservation(); if(props.validCart){navigate('/cart')}
+            }
+                }>Add To Cart</button>
         </div>
     )
 }

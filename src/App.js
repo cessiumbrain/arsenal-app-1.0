@@ -6,7 +6,8 @@ import Main from './MainComponent'
 import RESERVATIONS from './RESERVATIONS'
 import USERS from './USERS'
 //Dependencies----------------->
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate } from 'react-router-dom';
+import { createHashHistory } from "history";
 
 export const AuthContext = createContext(undefined)
 class App extends Component {
@@ -144,10 +145,7 @@ class App extends Component {
   }
   if(e.target.id ==='num-lanes'){
     this.setState({
-      reservationForm: {
-        ...this.state.reservationForm,
-        numLanes: e.target.value
-      }
+        resFormNumLanes: e.target.value
     }, ()=>{console.log(this.state.reservationForm)})
   }
   }
@@ -158,9 +156,15 @@ onReservationDateChange=(e)=>{
   }, ()=>{console.log(this.state.reservationForm)})
 }
 validateReservation=()=>{
+  //reset all current errors before going through and checking again
+  this.setState({
+    customerFirstNameError: null,
+    customerLastNameError: null,
+    resFormSelectedDateError: null,
+    resFormNumLanesError: null
+  })
   //customer first name validation----------------------------->
   if(this.state.reservationForm.customerFirstName===''){
-    console.log('no first name')
     this.setState({
        customerFirstNameError: 'please enter a first name'
     }, ()=>console.log(this.state.reservationForm))
@@ -180,27 +184,48 @@ validateReservation=()=>{
     })
   }
   //date validation--------------------------------->
-  console.log(this.state.resFormSelectedDate)
   if(!this.state.resFormSelectedDate){
-    console.log('no date')
+    this.setState({
+      resFormSelectedDateError: 'please select a date'
+    }, ()=>console.log(this.state.resFormSelectedDateError))
+  } else {
+    this.setState({
+      resFormSelectedDateError: null
+    })
   }
+  //number of lanes validation
+  if(!this.state.resFormNumLanes){
+    this.setState({
+      resFormNumLanesError: 'please enter number of lanes'
+    })
+  } else {
+    this.setState({
+      resFormNumLanesError: null
+    })
+  }
+    if(!this.state.resFormSelectedDateError && !this.state.resFormNumLanesError && !this.state.customerFirstNameError && !this.state.customerLastNameError){
+      console.log('all good')
+      this.setState({
+        ...this.state,
+        validCart: true,
+        currentUser:{
+          ...this.state.currentUser,
+          cart: {
+            customerFirstName: this.state.customerFirstName,
+            customerLastName: this.state.customerLastName,
+            date: this.state.resFormSelectedDate,
+            numLanes: this.state.resFormNumLanes
+          }
+        } 
+      }, ()=>{console.log(this.state)})
+    }
 }
 
-  addToCart = (firstName, lastName, numLanes, date) =>{
-    console.log('addToCart')
-    this.setState({
-      currentUser: {...this.state.currentUser, 
-        cart: {
-          firstName: firstName,
-          lastName: lastName,
-          numLanes: numLanes,
-          date: date
-        }}
-    }, ()=>{console.log(this.state.currentUser.cart)})
+  addToCart = () =>{
+ 
   }
 
   render(){
-
     return(
       <>
       <AuthContext.Provider value={this.state.currentUser}>
@@ -213,14 +238,20 @@ validateReservation=()=>{
             loginPasswordError={this.state.loginPasswordError}
             reservations={this.state.reservations}
             //Reservation Props----------------------------------->
+                //Methods----------------------------------------->
             addToCart={this.addToCart}
             onReservationBlur={this.onReservationBlur}
             onReservationDateChange={this.onReservationDateChange}
-            reservationForm={this.state.reservationForm}
             validateReservation={this.validateReservation}
+                //Data--------------------------------------------->
+            resFormSelectedDate={this.state.resFormSelectedDate}
+            validCart={this.state.validCart}    
+                //Errors------------------------------------------->
             customerFirstNameError={this.state.customerFirstNameError}
             customerLastNameError={this.state.customerLastNameError}
-            resFormSelectedDate={this.state.resFormSelectedDate}
+            resFormSelectedDateError={this.state.resFormSelectedDateError}
+            resFormNumLanesError={this.state.resFormNumLanesError}
+
 
           ></Main>
         </BrowserRouter>
