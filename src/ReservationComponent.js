@@ -59,7 +59,8 @@ const Reservation = (props)=>{
             <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes"></input>
             <small>{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
             <button onClick={()=>{
-                props.validateReservation(); if(props.validCart){navigate('/cart')}
+                //because state update takes too long to call the navigate function based on props passed in- I'm passing it back as a callback into the top level state updater
+                props.validateReservation(()=>{navigate('/cart')}); 
             }
                 }>Add To Cart</button>
         </div>

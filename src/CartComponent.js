@@ -12,8 +12,8 @@ const Cart = (props) =>{
         <div>
             <h1>Cart</h1>
             <p>Date: {currentUser.cart.date.toString()}</p>
-            <p>First Name: {currentUser.cart.firstName}</p>
-            <p>Last Name: {currentUser.cart.lastName}</p>
+            <p>First Name: {currentUser.cart.customerFirstName}</p>
+            <p>Last Name: {currentUser.cart.customerLastName}</p>
             <p>Number of Lanes: {currentUser.cart.numLanes}</p>
         </div>
         

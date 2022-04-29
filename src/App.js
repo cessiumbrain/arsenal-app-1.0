@@ -31,11 +31,10 @@ class App extends Component {
         usernameError: null,
         passwordError: null
       },
-      reservationForm: {
-        customerFirstName: '',
-        customerLastName: '',
-      },
       //Reservation Form--------------------------->
+      reservationForm:{
+
+      },
       customerLastNameError: null,
       customerFirstNameError: null,
       resFormSelectedDateError: null,
@@ -145,17 +144,24 @@ class App extends Component {
   }
   if(e.target.id ==='num-lanes'){
     this.setState({
-        resFormNumLanes: e.target.value
+        reservationForm:{
+          ...this.state.reservationForm,
+          resFormNumLanes: e.target.value
+        }
+        
     }, ()=>{console.log(this.state.reservationForm)})
   }
   }
 
 onReservationDateChange=(e)=>{
   this.setState({
+    reservationForm: {
+      ...this.state.reservationForm,
       resFormSelectedDate: e
+    }    
   }, ()=>{console.log(this.state.reservationForm)})
 }
-validateReservation=()=>{
+validateReservation=(navigateFunc)=>{
   //reset all current errors before going through and checking again
   this.setState({
     customerFirstNameError: null,
@@ -203,21 +209,22 @@ validateReservation=()=>{
       resFormNumLanesError: null
     })
   }
+  //if everything is valid 
     if(!this.state.resFormSelectedDateError && !this.state.resFormNumLanesError && !this.state.customerFirstNameError && !this.state.customerLastNameError){
-      console.log('all good')
+      console.log(this.state.reservationForm.customerFirstName)
       this.setState({
-        ...this.state,
         validCart: true,
         currentUser:{
           ...this.state.currentUser,
           cart: {
-            customerFirstName: this.state.customerFirstName,
-            customerLastName: this.state.customerLastName,
-            date: this.state.resFormSelectedDate,
-            numLanes: this.state.resFormNumLanes
+            customerFirstName: this.state.reservationForm.customerFirstName,
+            customerLastName: this.state.reservationForm.customerLastName,
+            date: this.state.reservationForm.resFormSelectedDate,
+            numLanes: this.state.reservationForm.resFormNumLanes
           }
         } 
-      }, ()=>{console.log(this.state)})
+      }, ()=>{console.log('validated res updated state', this.state.reservationForm)})
+      navigateFunc()
     }
 }
 
@@ -244,7 +251,7 @@ validateReservation=()=>{
             onReservationDateChange={this.onReservationDateChange}
             validateReservation={this.validateReservation}
                 //Data--------------------------------------------->
-            resFormSelectedDate={this.state.resFormSelectedDate}
+            resFormSelectedDate={this.state.reservationForm.resFormSelectedDate}
             validCart={this.state.validCart}    
                 //Errors------------------------------------------->
             customerFirstNameError={this.state.customerFirstNameError}
@@ -252,30 +259,10 @@ validateReservation=()=>{
             resFormSelectedDateError={this.state.resFormSelectedDateError}
             resFormNumLanesError={this.state.resFormNumLanesError}
 
-
           ></Main>
         </BrowserRouter>
       </AuthContext.Provider>
       
-      {/*<BrowserRouter>
-       
-        <ConditionalRoutes
-          onLoginBlur={this.onLoginBlur}
-          loginAuthError={this.state.loginAuthError}
-          loginUsernameError={this.state.loginUsernameError}
-          loginPasswordError={this.state.loginPasswordError}
-          validateLogin={this.validateLogin}></ConditionalRoutes>
-       
-        
-        <Reservation
-          currentUser={this.state.currentUser}
-          reservations={this.state.reservations}
-          addToCart={this.addToCart}
-          ></Reservation>
-          <Cart
-            cart={this.state.currentUser.cart}></Cart> 
-      </BrowserRouter>
-     */}
       </>
       
     )
