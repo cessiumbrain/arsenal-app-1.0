@@ -17,3 +17,11 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+
+.checked-text {
+  color: greenyellow
+}
+
+.unchecked-text {
+  color: red;
+}

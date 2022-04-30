@@ -17,14 +17,16 @@ class App extends Component {
       //Backend Data--------------------------->
       users: [...USERS],
       reservations: [...RESERVATIONS],
+      //--------------------------------------->
       currentUser: {
         username: 'joe',
-        // cart:{
-        //   firstName: 'Joe',
-        //   lastName: 'Iannotta',
-        //   date: new Date(),
-        //   numLanes: 2
-        // }
+        cart:{
+          firstName: 'Joe',
+          lastName: 'Iannotta',
+          date: new Date(),
+          numLanes: 2
+        },
+        confirmationPage: false
       },
       errors:{
         loginError: null,
@@ -152,16 +154,15 @@ class App extends Component {
     }, ()=>{console.log(this.state.reservationForm)})
   }
   }
-
-onReservationDateChange=(e)=>{
+  onReservationDateChange=(e)=>{
   this.setState({
     reservationForm: {
       ...this.state.reservationForm,
       resFormSelectedDate: e
     }    
   }, ()=>{console.log(this.state.reservationForm)})
-}
-validateReservation=(navigateFunc)=>{
+  }
+  validateReservation=(navigateFunc)=>{
   //reset all current errors before going through and checking again
   this.setState({
     customerFirstNameError: null,
@@ -226,10 +227,19 @@ validateReservation=(navigateFunc)=>{
       }, ()=>{console.log('validated res updated state', this.state.reservationForm)})
       navigateFunc()
     }
-}
+  }
+//Cart Method
+  makeReservation = () =>{
+  console.log('makereservation')
+ this.setState({
+  reservations: this.state.reservations.concat(this.state.currentUser.cart),
+  currentUser: {
+    ...this.state.currentUser,
+    confirmationPage: true
+  }
 
-  addToCart = () =>{
- 
+ }, ()=>{console.log(this.state.reservations)})
+
   }
 
   render(){
@@ -258,6 +268,8 @@ validateReservation=(navigateFunc)=>{
             customerLastNameError={this.state.customerLastNameError}
             resFormSelectedDateError={this.state.resFormSelectedDateError}
             resFormNumLanesError={this.state.resFormNumLanesError}
+            //Cart Props------------------------------------------->
+            makeReservation={this.makeReservation}
 
           ></Main>
         </BrowserRouter>

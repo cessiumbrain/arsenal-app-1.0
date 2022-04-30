@@ -57,7 +57,9 @@ const Main = (props) =>{
                     ></Reservation>
                 }></Route>
                 <Route path="/cart" element={
-                    <Cart></Cart>
+                    <Cart
+                    makeReservation={props.makeReservation}
+                    ></Cart>
                 }></Route>
             </Routes>
             </>
