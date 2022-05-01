@@ -1,9 +1,7 @@
 # Arsenal App Functional Components and Hooks
 
 ## Where I left off
-- figure out navigation from cart when making reservation
 
-    - add cart contents to reservation state > empty cart
 *** 
 
 ## To Do
@@ -17,6 +15,7 @@
 ***
 
 ## Done
+- [x] navigation and state management between reservation> cart > confirmation
 - [x] create subcomponents to display EULA before submitting submitting reservation
 - [x] validate form in app js, pass in a useNavigate callback from cart component that will navigate when button is clicked but after form is done updating state (navigate is based on state update of property validCart:true)
 - [x] validate form before it's passed to cart: component state should update on change so that it can be validated
@@ -25,6 +24,8 @@
 ***
 
 ## Architecture Notes
+### reservation > cart > confirmation
+- navigation from cart to EULA to Confirmation: valid reservation `{navigate to cart}`=> confirm checkout `{pass currentUser.confirmationPage: true to trigger navigation to confirmation component}`=> on componentWillUnmount (i.e. any navigation away from page) `{reset cart and confirmation state}`
 
 #### users/login
 - if !currentUser route to login

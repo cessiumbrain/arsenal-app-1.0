@@ -1,6 +1,8 @@
 const RESERVATIONS = [
     {
-        date: new Date(2022, 3, 18),
+        customerFirstName: 'Joe',
+        customerLastName: 'Iannotta',
+        date: new Date('Sun May 1 2022 00:00:00'),
         numLanes: 2
     }
 ]

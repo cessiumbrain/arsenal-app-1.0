@@ -5,20 +5,16 @@ import Confirmation from './ConfirmationComponent'
 
 
 const Cart = (props) =>{
-
+    useEffect(()=>{console.log('s')})
     const currentUser = useContext(AuthContext)
     const navigate = useNavigate()
     const [nonrefundableCheck, setNonrefundable] = useState(false); 
     const [numberOfPeopleCheck, setNumberOfPeople] = useState(false);
     const [twentyOneCheck, setTwentyOneCheck] = useState(false)
     
-
-
-    if(currentUser.confirmationPage){
-        return(
-            <div>You're all set</div>
-        )
-        
+//when the makeReservation method fires, set the current user confirmation object as the reservation just made and navigate to the confirmation page.  When that component unmounts, reset the confirmation object to null
+    if(currentUser.confirmationPage){ 
+        navigate('/confirmation')
     } else if(currentUser.cart){
            return(
         <div>

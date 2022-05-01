@@ -228,9 +228,8 @@ class App extends Component {
       navigateFunc()
     }
   }
-//Cart Method
+//Cart Method----------------------------->
   makeReservation = () =>{
-  console.log('makereservation')
  this.setState({
   reservations: this.state.reservations.concat(this.state.currentUser.cart),
   currentUser: {
@@ -240,6 +239,16 @@ class App extends Component {
 
  }, ()=>{console.log(this.state.reservations)})
 
+  }
+//Confirmation Method---------------------->
+  resetCartAndConfirmation=()=>{
+    this.setState({
+      currentUser:{
+        ...this.state.currentUser,
+        confirmationPage: false,
+        cart: null
+      }
+    })
   }
 
   render(){
@@ -270,6 +279,8 @@ class App extends Component {
             resFormNumLanesError={this.state.resFormNumLanesError}
             //Cart Props------------------------------------------->
             makeReservation={this.makeReservation}
+            //Confirmation Props
+            resetCartAndConfirmation={this.resetCartAndConfirmation}
 
           ></Main>
         </BrowserRouter>

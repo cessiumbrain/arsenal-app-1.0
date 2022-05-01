@@ -1,12 +1,21 @@
 import { AuthContext } from "./App"
-import { useEffect } from "react"
+import { useEffect, Component } from "react"
 
 
-const Confirmation = () =>{
-    useEffect(()=>{console.log('confirmation effect')})
-    return(
+class Confirmation extends Component{
+    constructor(props){
+        super(props)
+    }
+    
+    componentWillUnmount=()=>{
+        this.props.resetCartAndConfirmation()
+    }
+    render(){
+        return(
         <div>congratulations, you're all set</div>
     )
+    }
+    
 }
 
 export default Confirmation

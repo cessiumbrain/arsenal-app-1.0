@@ -5,6 +5,7 @@ import Login from './LoginComponent';
 import MasterCalendar from "./MasterCalendarComponent";
 import Reservation from './ReservationComponent'
 import Cart from './CartComponent'
+import Confirmation from "./ConfirmationComponent";
 
 
 const Main = (props) =>{
@@ -60,6 +61,11 @@ const Main = (props) =>{
                     <Cart
                     makeReservation={props.makeReservation}
                     ></Cart>
+                }></Route>
+                <Route path="/confirmation" element={
+                    <Confirmation
+                    resetCartAndConfirmation={props.resetCartAndConfirmation}
+                    ></Confirmation>
                 }></Route>
             </Routes>
             </>
