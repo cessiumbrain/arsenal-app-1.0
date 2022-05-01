@@ -1,15 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*----------------Global------------------------->*/
+input {
+  border-style: none;
+  margin: 3px;
+  height: 2em;
+  border-radius: 25px;
+  background-color: white;
+  text-indent: 5%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  border-radius: 25px;
+  border: none;
+  height: 2em;
+  margin: 3px;
+  background-color: rgb(189, 184, 141);
+  color: white;
+}
+
+body {
+  margin: 0; 
+  box-sizing: border-box;
+}
+
+
+/*-----------------Login Component--------------------> */
+#login-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+}
+
+#login-component .form-control {
+  background: rgba(0,0,0, .5);
+  margin: 3px;
+  padding: 10px;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#login-logo {
+  height: 50%;
+  
 }
 
 nav {

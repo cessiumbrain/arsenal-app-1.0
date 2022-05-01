@@ -18,22 +18,22 @@ class App extends Component {
       users: [...USERS],
       reservations: [...RESERVATIONS],
       //--------------------------------------->
-      currentUser: {
-        cart:{
-          firstName: 'Joe',
-          lastName: 'Iannotta',
-          date: new Date(),
-          numLanes: 2
-        },
-        username: 'myUsername',
-        password: 'password',
-        userId: 1,
-        cart: null,
-        admin: true,
-        firstName: 'Joe',
-        lastName: 'Iannotta',
-        confirmationPage: false
-      },
+      // currentUser: {
+      //   cart:{
+      //     firstName: 'Joe',
+      //     lastName: 'Iannotta',
+      //     date: new Date(),
+      //     numLanes: 2
+      //   },
+      //   username: 'myUsername',
+      //   password: 'password',
+      //   userId: 1,
+      //   cart: null,
+      //   admin: true,
+      //   firstName: 'Joe',
+      //   lastName: 'Iannotta',
+      //   confirmationPage: false
+      // },
       errors:{
         loginError: null,
         usernameError: null,

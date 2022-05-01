@@ -5,7 +5,7 @@
 *** 
 
 ## To Do
-- create profile page then begin basic styling
+
 - switch booking data to match first and last names from user's profile rather than input form
 - add phone number, group name to booking
 - try using useeffect to set html max attribute and clearing input field
@@ -14,6 +14,7 @@
 ***
 
 ## Done
+- [x] created profile page
 - [x] navigation and state management between reservation> cart > confirmation
 - [x] create subcomponents to display EULA before submitting submitting reservation
 - [x] validate form in app js, pass in a useNavigate callback from cart component that will navigate when button is clicked but after form is done updating state (navigate is based on state update of property validCart:true)

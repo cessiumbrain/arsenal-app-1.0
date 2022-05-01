@@ -1,7 +1,7 @@
 const USERS = [
     {
         id: 1,
-        username: 'bowlMaster69',
+        username: 'joe',
         password: 'password',
         userId: 1,
         cart: null,
