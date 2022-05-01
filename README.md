@@ -5,13 +5,12 @@
 *** 
 
 ## To Do
-- check individual state values against valid- if one value is invalid pass an error - 
-- cart should be reset after reservation is made (i.e. checkout)
+- create profile page then begin basic styling
+- switch booking data to match first and last names from user's profile rather than input form
+- add phone number, group name to booking
 - try using useeffect to set html max attribute and clearing input field
-- form validation
-    - login form
-    - reservation component
-    - cart component
+- set color range border based on how many reservations for a given day
+- 
 ***
 
 ## Done

@@ -1,11 +1,13 @@
 import {  useContext } from "react";
 import { NavLink, Routes, Route } from 'react-router-dom';
 import { AuthContext } from "./App";
+//Components---------------------------------------------->
 import Login from './LoginComponent';
 import MasterCalendar from "./MasterCalendarComponent";
 import Reservation from './ReservationComponent'
 import Cart from './CartComponent'
 import Confirmation from "./ConfirmationComponent";
+import Profile from "./ProfileComponent"
 
 
 const Main = (props) =>{
@@ -31,6 +33,7 @@ const Main = (props) =>{
                 <NavLink to="/">Calendar</NavLink>
                 <NavLink to="/reservation">Make a Reservation</NavLink>
                 <NavLink to="/cart">My Cart</NavLink>
+                <NavLink to="/profile">My Profile</NavLink>
             </nav>
             
             <Routes>
@@ -67,6 +70,12 @@ const Main = (props) =>{
                     resetCartAndConfirmation={props.resetCartAndConfirmation}
                     ></Confirmation>
                 }></Route>
+                <Route path="/profile" element={
+                    <Profile
+                    reservations={props.reservations}
+                    ></Profile>
+                }
+                />
             </Routes>
             </>
             

@@ -30,7 +30,10 @@ const MasterCalendar = (props) =>{
     return(
         <>
             <h1>Master Calendar</h1>
-            <Calendar onChange={(e)=>{setDate(e)}}></Calendar>
+            <Calendar 
+            onChange={(e)=>{setDate(e)}}
+            calendarType="US"
+            ></Calendar>
             <h2>Selected Date: {selectedDate ? selectedDate.toDateString() : ''}</h2>
             <table className="table-border">
                 <thead>

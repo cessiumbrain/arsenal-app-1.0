@@ -19,13 +19,19 @@ class App extends Component {
       reservations: [...RESERVATIONS],
       //--------------------------------------->
       currentUser: {
-        username: 'joe',
         cart:{
           firstName: 'Joe',
           lastName: 'Iannotta',
           date: new Date(),
           numLanes: 2
         },
+        username: 'myUsername',
+        password: 'password',
+        userId: 1,
+        cart: null,
+        admin: true,
+        firstName: 'Joe',
+        lastName: 'Iannotta',
         confirmationPage: false
       },
       errors:{
@@ -218,6 +224,7 @@ class App extends Component {
         currentUser:{
           ...this.state.currentUser,
           cart: {
+            userId: this.state.currentUser.id,
             customerFirstName: this.state.reservationForm.customerFirstName,
             customerLastName: this.state.reservationForm.customerLastName,
             date: this.state.reservationForm.resFormSelectedDate,
@@ -236,8 +243,7 @@ class App extends Component {
     ...this.state.currentUser,
     confirmationPage: true
   }
-
- }, ()=>{console.log(this.state.reservations)})
+ })
 
   }
 //Confirmation Method---------------------->
@@ -281,7 +287,6 @@ class App extends Component {
             makeReservation={this.makeReservation}
             //Confirmation Props
             resetCartAndConfirmation={this.resetCartAndConfirmation}
-
           ></Main>
         </BrowserRouter>
       </AuthContext.Provider>
