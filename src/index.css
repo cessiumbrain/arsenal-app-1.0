@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 /*----------------Global------------------------->*/
+* {
+  font-family: 'Koulen', cursive;
+}
+
 input {
   border-style: none;
   margin: 3px;
@@ -7,6 +13,13 @@ input {
   background-color: white;
   text-indent: 5%;
 }
+
+nav {
+  background-color: beige;
+  display: flex;
+  justify-content: space-around;
+}
+
 
 button {
   border-radius: 25px;
@@ -78,6 +91,7 @@ body {
 .react-calendar button:hover {
   background-color: red;
 }
+
 #calendar-div {
   background-color: rgba(0,0,0,.5);
   margin: 2%;
@@ -127,12 +141,33 @@ outline: 2px solid black;
   color: white
 }
 
-/**/
-nav {
-  background-color: beige;
+/*Cart Component*/
+#cart-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content:center ;
+  flex-direction: column;
 }
+
+#EULA, #cart-info{
+  background-color: white;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#cart-info .unchecked-text {
+text-align: center;
+}
+
+#cart-info button {
+display: block;
+margin: 0 auto
+}
+
 
 
 

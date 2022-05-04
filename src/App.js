@@ -28,7 +28,7 @@ class App extends Component {
         username: 'myUsername',
         password: 'password',
         userId: 1,
-        cart: null,
+        // cart: null,
         admin: true,
         firstName: 'Joe',
         lastName: 'Iannotta',
