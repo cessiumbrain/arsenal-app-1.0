@@ -22,6 +22,13 @@ body {
   box-sizing: border-box;
 }
 
+.checked-text, .valid-text {
+  color: greenyellow
+}
+
+.unchecked-text, .error-text {
+  color: red;
+}
 
 /*-----------------Login Component--------------------> */
 #login-component {
@@ -44,24 +51,99 @@ body {
 }
 
 #login-logo {
-  height: 50%;
-  
+  height: 50%; 
 }
 
+/* Master Calendar Component */
+#master-calendar-component, #reservation-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.react-calendar {
+  background-color: white;
+  margin: 2%;
+  border-radius: 25px;
+  padding: 10px;
+  color: black
+}
+
+.react-calendar button:hover {
+  background-color: red;
+}
+#calendar-div {
+  background-color: rgba(0,0,0,.5);
+  margin: 2%;
+  color: white;
+  border-radius: 25px;
+}
+
+#calendar-div h1 {
+  text-align: center;
+}
+
+#calendar-res-display {
+  background-color: rgba(0, 0, 0, .5);
+}
+#calendar-res-display h1, h2{
+color: white;
+text-align: center;
+}
+
+/*Reservation Component*/
+#resrvation-component {
+background-color: white;
+}
+
+#reservation-component input {
+outline: 2px solid black;
+}
+
+#reservation-component input:focus {
+  outline: 2px solid red
+}
+
+#reservation-component .form-control {
+  display: flex;
+  background-color: white;
+  border-radius: 25px;
+  flex-direction: column;
+  padding: 5px;
+
+}
+
+#reservation-component .react-calendar {
+
+}
+
+#reservation-component h1{
+  color: white
+}
+
+/**/
 nav {
   background-color: beige;
   display: flex;
   justify-content: space-around;
 }
 
-.checked-text {
-  color: greenyellow
-}
 
-.unchecked-text {
-  color: red;
-}
 
-.table-border {
+/*tables*/
+.table-border, td, th {
   border: 5px solid black;
+  border-collapse: collapse;
+  background-color: white;
+  padding: 3px;
+}
+
+td {
+  text-align: center;
 }

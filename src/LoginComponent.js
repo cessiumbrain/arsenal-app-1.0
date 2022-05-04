@@ -11,7 +11,7 @@ const Login = (props) =>{
                 <img id="login-logo" src={logo}></img>
                 <input onBlur={(e)=>{props.onLoginBlur(e)}} id="username"></input>
                 <small>{props.loginUsernameError}</small>
-                <input onBlur={(e)=>{props.onLoginBlur(e)}} id="password"></input>            
+                <input type="password" onBlur={(e)=>{props.onLoginBlur(e)}} id="password"></input>            
                 <small>{props.loginPasswordError}</small>
                 <small>{props.loginAuthError}</small>
                 <button onClick={()=>{props.validateLogin()}}>Login</button>

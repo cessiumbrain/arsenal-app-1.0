@@ -42,27 +42,31 @@ const Reservation = (props)=>{
     }
     //<-------------------------return statement---------------------->
     return(
-        <div>
+        <div id="reservation-component">
             <h1>Reservation</h1>
             <Calendar onChange={(e)=>{props.onReservationDateChange(e)}}></Calendar>
-            <p>Username: {currentUser.username}</p>
+            <div class="form-control">
+                <p>Username: {currentUser.username}</p>
             <h5>Selected Date: {props.resFormSelectedDate ? props.resFormSelectedDate.toString() : ''}</h5>
-            <small>{props.resFormSelectedDateError ? props.resFormSelectedDateError : ''}</small>
+            <small className='error-text'>{props.resFormSelectedDateError ? props.resFormSelectedDateError : ''}</small>
             <label>First Name:</label>
             <input onBlur={(e)=>props.onReservationBlur(e)} id="customer-first-name"></input>
-            <small>{props.customerFirstNameError ? props.customerFirstNameError : ''}</small>
+            <small className='error-text'>{props.customerFirstNameError ? props.customerFirstNameError : ''}</small>
             <label>Last Name:</label>
             <input onBlur={(e)=>{props.onReservationBlur(e)}} id="customer-last-name"></input>
-            <small>{props.customerLastNameError ? props.customerLastNameError : ''}</small>
+            <small className="error-text">{props.customerLastNameError ? props.customerLastNameError : ''}</small>
             <p>Number of Lanes Left: {totalLanes}</p>
             <label>Number of Lanes</label>
             <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes"></input>
-            <small>{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
+            <small className="error-text">{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
             <button onClick={()=>{
                 //because state update takes too long to call the navigate function based on props passed in- I'm passing it back as a callback into the top level state updater
                 props.validateReservation(()=>{navigate('/cart')}); 
             }
                 }>Add To Cart</button>
+            </div>
+
+            
         </div>
     )
 }

@@ -5,7 +5,8 @@
 *** 
 
 ## To Do
-
+- check reseravtion validation with no input vals
+- basic reservation list
 - switch booking data to match first and last names from user's profile rather than input form
 - add phone number, group name to booking
 - try using useeffect to set html max attribute and clearing input field

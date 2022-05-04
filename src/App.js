@@ -18,22 +18,22 @@ class App extends Component {
       users: [...USERS],
       reservations: [...RESERVATIONS],
       //--------------------------------------->
-      // currentUser: {
-      //   cart:{
-      //     firstName: 'Joe',
-      //     lastName: 'Iannotta',
-      //     date: new Date(),
-      //     numLanes: 2
-      //   },
-      //   username: 'myUsername',
-      //   password: 'password',
-      //   userId: 1,
-      //   cart: null,
-      //   admin: true,
-      //   firstName: 'Joe',
-      //   lastName: 'Iannotta',
-      //   confirmationPage: false
-      // },
+      currentUser: {
+        cart:{
+          firstName: 'Joe',
+          lastName: 'Iannotta',
+          date: new Date(),
+          numLanes: 2
+        },
+        username: 'myUsername',
+        password: 'password',
+        userId: 1,
+        cart: null,
+        admin: true,
+        firstName: 'Joe',
+        lastName: 'Iannotta',
+        confirmationPage: false
+      },
       errors:{
         loginError: null,
         usernameError: null,
@@ -43,9 +43,9 @@ class App extends Component {
       reservationForm:{
 
       },
-      customerLastNameError: null,
-      customerFirstNameError: null,
-      resFormSelectedDateError: null,
+      customerLastNameError: 'please enter last name',
+      customerFirstNameError: 'please enter first name',
+      resFormSelectedDateError: 'please select date',
       //Login Form------------------------------>     
       loginUsername: '',
       loginUsernameError: null,
@@ -166,7 +166,7 @@ class App extends Component {
       ...this.state.reservationForm,
       resFormSelectedDate: e
     }    
-  }, ()=>{console.log(this.state.reservationForm)})
+  }, ()=>{console.log(this.state.reservationForm.resFormSelectedDate)})
   }
   validateReservation=(navigateFunc)=>{
   //reset all current errors before going through and checking again
@@ -177,37 +177,38 @@ class App extends Component {
     resFormNumLanesError: null
   })
   //customer first name validation----------------------------->
-  if(this.state.reservationForm.customerFirstName===''){
+  if(!this.state.reservationForm.customerFirstName){
     this.setState({
        customerFirstNameError: 'please enter a first name'
-    }, ()=>console.log(this.state.reservationForm))
+    }, ()=>console.log('invalid first name'))
   } else {
     this.setState({
       customerFirstNameError: null
     })
   }
   //customer last name validation------------------------------>
-  if(this.state.reservationForm.customerLastName===''){
+  if(!this.state.reservationForm.customerLastName){
     this.setState({
       customerLastNameError: 'please enter a last name'
-    }, ()=>{console.log(this.state.reservationForm)})
+    }, ()=>{console.log('invalid last name')})
   } else {
     this.setState({
       customerLastNameError: null
     })
   }
   //date validation--------------------------------->
-  if(!this.state.resFormSelectedDate){
+  if(!this.state.reservationForm.resFormSelectedDate){
     this.setState({
       resFormSelectedDateError: 'please select a date'
-    }, ()=>console.log(this.state.resFormSelectedDateError))
+    }, ()=>console.log('invalid date'))
   } else {
     this.setState({
       resFormSelectedDateError: null
     })
   }
   //number of lanes validation
-  if(!this.state.resFormNumLanes){
+  if(!this.state.reservationForm.resFormNumLanes){
+    console.log('no lanes')
     this.setState({
       resFormNumLanesError: 'please enter number of lanes'
     })
