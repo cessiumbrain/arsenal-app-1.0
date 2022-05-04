@@ -68,7 +68,7 @@ body {
 }
 
 /* Master Calendar Component */
-#master-calendar-component, #reservation-component {
+#master-calendar-component,#reservation-component,#confirmation-component {
   background-image: url('../public/assets/background.jpeg');
   background-size: cover;
 
@@ -105,10 +105,12 @@ body {
 
 #calendar-res-display {
   background-color: rgba(0, 0, 0, .5);
+  border-radius: 25px;
 }
 #calendar-res-display h1, h2{
 color: white;
 text-align: center;
+margin: 0;
 }
 
 /*Reservation Component*/
@@ -152,6 +154,10 @@ outline: 2px solid black;
   flex-direction: column;
 }
 
+#cart-component p,h1 {
+  margin: 0;
+}
+
 #EULA, #cart-info{
   background-color: white;
   border-radius: 25px;
@@ -167,9 +173,52 @@ text-align: center;
 display: block;
 margin: 0 auto
 }
+/*Confirmation Component*/
+#confirmation-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+  flex-direction: column;
+  align-items: center;
+}
 
+#confirmation-background {
+  background-color: white;
+  border-radius: 25px;
+}
+ #confirmation-background p {
+   padding: 10px;
+   font-size: 30px;
+ }
 
+ /*Profile Component*/
+ #profile-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+  flex-direction: column;
+  align-items: center;
+ }
 
+ #profile-background{
+   background-color: rgba(0,0,0, .5);
+   margin: 5px;
+   border-radius: 25px;
+ }
+
+ #profile-background p, h1{
+   color: white
+ }
+
+ #profile-background h1 {
+   text-align: center;
+ }
 
 /*tables*/
 .table-border, td, th {

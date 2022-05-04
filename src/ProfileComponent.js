@@ -32,7 +32,8 @@ const Profile = (props) =>{
     
     return(
         <div id="profile-component">
-            <h1>My Profile</h1>
+            <div id="profile-background">
+                  <h1>My Profile</h1>
             <h2>My Info</h2>
             <p>First Name: {currentUser.firstName}</p>
             <p>Last Name: {currentUser.lastName}</p>
@@ -49,6 +50,8 @@ const Profile = (props) =>{
                     {MyReservations===null ? <p>No Reservations</p> : <MyReservations></MyReservations>} 
                 </tbody>
             </table>
+            </div>
+          
             
 
         </div>
