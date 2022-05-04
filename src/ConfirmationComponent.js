@@ -12,7 +12,12 @@ class Confirmation extends Component{
     }
     render(){
         return(
-        <div>congratulations, you're all set</div>
+        <div id="confirmation-component">
+            <div id="confirmation-background">
+                <p>congratulations, you're all set</p>
+            </div>
+            
+        </div>
     )
     }
     

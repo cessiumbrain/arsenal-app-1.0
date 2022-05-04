@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 /*----------------Global------------------------->*/
+* {
+  font-family: 'Koulen', cursive;
+}
+
 input {
   border-style: none;
   margin: 3px;
@@ -7,6 +13,13 @@ input {
   background-color: white;
   text-indent: 5%;
 }
+
+nav {
+  background-color: beige;
+  display: flex;
+  justify-content: space-around;
+}
+
 
 button {
   border-radius: 25px;
@@ -55,7 +68,7 @@ body {
 }
 
 /* Master Calendar Component */
-#master-calendar-component, #reservation-component {
+#master-calendar-component,#reservation-component,#confirmation-component {
   background-image: url('../public/assets/background.jpeg');
   background-size: cover;
 
@@ -78,6 +91,7 @@ body {
 .react-calendar button:hover {
   background-color: red;
 }
+
 #calendar-div {
   background-color: rgba(0,0,0,.5);
   margin: 2%;
@@ -91,10 +105,12 @@ body {
 
 #calendar-res-display {
   background-color: rgba(0, 0, 0, .5);
+  border-radius: 25px;
 }
 #calendar-res-display h1, h2{
 color: white;
 text-align: center;
+margin: 0;
 }
 
 /*Reservation Component*/
@@ -127,14 +143,82 @@ outline: 2px solid black;
   color: white
 }
 
-/**/
-nav {
-  background-color: beige;
+/*Cart Component*/
+#cart-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content:center ;
+  flex-direction: column;
 }
 
+#cart-component p,h1 {
+  margin: 0;
+}
 
+#EULA, #cart-info{
+  background-color: white;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#cart-info .unchecked-text {
+text-align: center;
+}
+
+#cart-info button {
+display: block;
+margin: 0 auto
+}
+/*Confirmation Component*/
+#confirmation-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+  flex-direction: column;
+  align-items: center;
+}
+
+#confirmation-background {
+  background-color: white;
+  border-radius: 25px;
+}
+ #confirmation-background p {
+   padding: 10px;
+   font-size: 30px;
+ }
+
+ /*Profile Component*/
+ #profile-component {
+  background-image: url('../public/assets/background.jpeg');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content:center ;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ #profile-background{
+   background-color: rgba(0,0,0, .5);
+   margin: 5px;
+   border-radius: 25px;
+ }
+
+ #profile-background p, h1{
+   color: white
+ }
+
+ #profile-background h1 {
+   text-align: center;
+ }
 
 /*tables*/
 .table-border, td, th {
@@ -147,3 +231,5 @@ nav {
 td {
   text-align: center;
 }
+
+/*practicing git branching*/
