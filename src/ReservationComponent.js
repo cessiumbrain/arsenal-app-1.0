@@ -57,7 +57,9 @@ const Reservation = (props)=>{
             <small className="error-text">{props.customerLastNameError ? props.customerLastNameError : ''}</small>
             <p>Number of Lanes Left: {totalLanes}</p>
             <label>Number of Lanes</label>
-            <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes"></input>
+            <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes" onKeyUp={(e)=>{
+
+                if(e.target.value>totalLanes){e.target.value=null}}}></input>
             <small className="error-text">{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
             <button onClick={()=>{
                 //because state update takes too long to call the navigate function based on props passed in- I'm passing it back as a callback into the top level state updater

@@ -1,17 +1,22 @@
 # Arsenal App Functional Components and Hooks
 
 ## Where I left off
+- Troubleshooting reservation validation:
+All form value stored in app state onchange.  Errors stored in app state and passed back via reservationForm object in app state
+
+## Bugs
+- navigation from reservation booking requires two clicks
+- you can still enter a value higher than the max value for number of lanes input
 
 *** 
 
 ## To Do
-- check reseravtion validation with no input vals
 - basic reservation list
 - switch booking data to match first and last names from user's profile rather than input form
 - add phone number, group name to booking
 - try using useeffect to set html max attribute and clearing input field
 - set color range border based on how many reservations for a given day
-- 
+
 ***
 
 ## Done
