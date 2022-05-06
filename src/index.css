@@ -220,6 +220,10 @@ margin: 0 auto
    text-align: center;
  }
 
+ #profile-background table {
+   padding: 10px;
+ }
+
 /*tables*/
 .table-border, td, th {
   border: 5px solid black;

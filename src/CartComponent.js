@@ -7,7 +7,6 @@ import Confirmation from './ConfirmationComponent'
 const Cart = (props) =>{
     
     const currentUser = useContext(AuthContext)
-    console.log(currentUser)
     const navigate = useNavigate()
     const [nonrefundableCheck, setNonrefundable] = useState(false); 
     const [numberOfPeopleCheck, setNumberOfPeople] = useState(false);
