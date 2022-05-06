@@ -19,16 +19,16 @@ class App extends Component {
       reservations: [...RESERVATIONS],
       //--------------------------------------->
       currentUser: {
-        cart:{
-          firstName: 'Joe',
-          lastName: 'Iannotta',
-          date: new Date(),
-          numLanes: 2
-        },
+        // cart:{
+        //   firstName: 'Joe',
+        //   lastName: 'Iannotta',
+        //   date: new Date(),
+        //   numLanes: 2
+        // },
         username: 'myUsername',
         password: 'password',
         userId: 1,
-        // cart: null,
+        cart: null,
         admin: true,
         firstName: 'Joe',
         lastName: 'Iannotta',
@@ -155,7 +155,7 @@ class App extends Component {
         ...this.state.reservationForm,
         customerLastName: e.target.value
       }
-    }, ()=>{console.log(this.state.reservationForm)})
+    })
   }
   if(e.target.id ==='num-lanes'){
     this.setState({
@@ -175,8 +175,8 @@ class App extends Component {
     }    
   }, ()=>{console.log(this.state.reservationForm.resFormSelectedDate)})
   }
-  validateReservation=(navFunction)=>{
-    console.log('validate reservation', `first name: ${this.state.reservationForm.customerFirstName}`)
+  validateReservation=(navigateFunction)=>{
+
   //reset all errors to start
   this.setState({
     reservationForm:{
@@ -188,23 +188,31 @@ class App extends Component {
       }
     }
   })
+  // create a new error object variable
+  let errorObj = {}
+  //run if checks and set errorObj values accordingly
    if(!this.state.reservationForm.customerFirstName){
-     console.log('no first name')
-     this.setState({
-       reservationForm:{
-         ...this.state.reservationForm,
-         errors:{
-           ...this.state.reservationForm.errors,
-          customerFirstNameError: 'please enter a first name'  
-         }
-       }
-     }, ()=>(console.log('s')))
-   } else {
-     navFunction()
+    errorObj.firstName = 'no first name'
+   } 
+ 
+   else {
+     errorObj.firstName = null
    }
-
-
+   this.setState({
+    reservationForm: {
+      ...this.state.reservationForm,
+      errors: {
+        ...errorObj
+      }
+    }
+   }, ()=>{
+     if(!errorObj.firstName){
+       navigateFunction()
+     }
+   })
   }
+
+
 //Cart Method----------------------------->
   makeReservation = () =>{
  this.setState({

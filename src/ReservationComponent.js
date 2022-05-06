@@ -63,7 +63,8 @@ const Reservation = (props)=>{
             <small className="error-text">{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
             <button onClick={()=>{
                 //because state update takes too long to call the navigate function based on props passed in- I'm passing it back as a callback into the top level state updater
-                props.validateReservation(()=>{navigate('/cart')}); 
+                props.validateReservation(()=>{
+                    navigate('/cart')}); 
             }
                 }>Add To Cart</button>
             </div>
