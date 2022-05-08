@@ -41,26 +41,37 @@ const Reservation = (props)=>{
         }
     }
     //<-------------------------return statement---------------------->
+    console.log(props)
     return(
         <div id="reservation-component">
             <h1>Reservation</h1>
             <Calendar onChange={(e)=>{props.onReservationDateChange(e)}}></Calendar>
             <div class="form-control">
                 <p>Username: {currentUser.username}</p>
-            <h5>Selected Date: {props.resFormSelectedDate ? props.resFormSelectedDate.toString() : ''}</h5>
-            <small className='error-text'>{props.resFormSelectedDateError ? props.resFormSelectedDateError : ''}</small>
+            <h5>Selected Date: {props.selectedDate ? props.selectedDate.toString() : ''}</h5>
+            <small className='error-text'>{props.errors.selectedDate ? props.errors.selectedDate : ''}</small>
             <label>First Name:</label>
             <input onBlur={(e)=>props.onReservationBlur(e)} id="customer-first-name"></input>
-            <small className='error-text'>{props.customerFirstNameError ? props.customerFirstNameError : ''}</small>
+            <small className='error-text'>{props.errors.firstName ? props.errors.firstName : ''}</small>
             <label>Last Name:</label>
             <input onBlur={(e)=>{props.onReservationBlur(e)}} id="customer-last-name"></input>
-            <small className="error-text">{props.customerLastNameError ? props.customerLastNameError : ''}</small>
+            <small className="error-text">{props.errors.lastName ? props.errors.lastName : ''}</small>
             <p>Number of Lanes Left: {totalLanes}</p>
             <label>Number of Lanes</label>
-            <input max={totalLanes} type="number" onChange={(e)=>{props.onReservationBlur(e)}} id="num-lanes" onKeyUp={(e)=>{
-
-                if(e.target.value>totalLanes){e.target.value=null}}}></input>
-            <small className="error-text">{props.resFormNumLanesError ? props.resFormNumLanesError : ''}</small>
+            <input max={totalLanes} 
+                type="number"
+                onChange={(e)=>{
+                    document.querySelector("#num-lanes-error").innerText = ''
+                    props.onReservationBlur(e)}} id="num-lanes" 
+                onKeyUp={(e)=>{
+                    if(e.target.value>totalLanes){
+                        e.target.value=null
+                        document.querySelector("#num-lanes-error").innerText = `we don't have enough lanes available for that`
+                    }
+                    }
+            }>
+                </input>
+            <small id="num-lanes-error" className="error-text">{props.errors.numLanes ? props.errors.numLanes : ''}</small>
             <button onClick={()=>{
                 //because state update takes too long to call the navigate function based on props passed in- I'm passing it back as a callback into the top level state updater
                 props.validateReservation(()=>{

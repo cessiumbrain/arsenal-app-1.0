@@ -171,7 +171,7 @@ class App extends Component {
   this.setState({
     reservationForm: {
       ...this.state.reservationForm,
-      resFormSelectedDate: e
+      selectedDate: e
     }    
   }, ()=>{console.log(this.state.reservationForm.resFormSelectedDate)})
   }
@@ -191,13 +191,24 @@ class App extends Component {
   // create a new error object variable
   let errorObj = {}
   //run if checks and set errorObj values accordingly
+  if(!this.state.reservationForm.selectedDate){
+    errorObj.selectedDate = 'please select a date ';
+  }
    if(!this.state.reservationForm.customerFirstName){
     errorObj.firstName = 'no first name'
-   } 
- 
-   else {
+   } else {
      errorObj.firstName = null
    }
+   if(!this.state.reservationForm.customerLastName){
+     errorObj.lastName = 'please enter last name'
+   } else {
+     errorObj.lastName = null
+   }
+   if(!this.state.reservationForm.numLanes){
+     errorObj.numLanes = "please enter a number of lanes"
+   }
+
+
    this.setState({
     reservationForm: {
       ...this.state.reservationForm,
@@ -254,13 +265,10 @@ class App extends Component {
             onReservationDateChange={this.onReservationDateChange}
             validateReservation={this.validateReservation}
                 //Data--------------------------------------------->
-            resFormSelectedDate={this.state.reservationForm.resFormSelectedDate}
+            selectedDate={this.state.reservationForm.selectedDate}
             validCart={this.state.validCart}    
                 //Errors------------------------------------------->
-            customerFirstNameError={this.state.customerFirstNameError}
-            customerLastNameError={this.state.customerLastNameError}
-            resFormSelectedDateError={this.state.resFormSelectedDateError}
-            resFormNumLanesError={this.state.resFormNumLanesError}
+            errors={this.state.reservationForm.errors}
             //Cart Props------------------------------------------->
             makeReservation={this.makeReservation}
             //Confirmation Props

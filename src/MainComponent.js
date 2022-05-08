@@ -47,17 +47,14 @@ const Main = (props) =>{
                     //Data---------------------------->
                     reservations={props.reservations}
                     validCart={props.validCart}
-                    resFormSelectedDate={props.resFormSelectedDate}
+                    selectedDate={props.selectedDate}
                     //Methods-------------------------->
                     validateReservation={props.validateReservation}
                     addToCart={props.addToCart}
                     onReservationBlur={props.onReservationBlur}
                     onReservationDateChange={props.onReservationDateChange}
                     //Errors--------------------------->
-                    customerFirstNameError={props.customerFirstNameError}
-                    customerLastNameError={props.customerLastNameError}
-                    resFormSelectedDateError={props.resFormSelectedDateError}
-                    resFormNumLanesError={props.resFormNumLanesError}
+                    errors={props.errors}
                     ></Reservation>
                 }></Route>
                 <Route path="/cart" element={

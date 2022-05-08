@@ -20,6 +20,7 @@ All form value stored in app state onchange.  Errors stored in app state and pas
 ***
 
 ## Done
+- [x] fixed bug with setting state in reservation form validation and navigating synchronously
 - [x] created profile page
 - [x] navigation and state management between reservation> cart > confirmation
 - [x] create subcomponents to display EULA before submitting submitting reservation
