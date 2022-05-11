@@ -6,8 +6,7 @@ import Main from './MainComponent'
 import RESERVATIONS from './RESERVATIONS'
 import USERS from './USERS'
 //Dependencies----------------->
-import { BrowserRouter, Navigate } from 'react-router-dom';
-import { createHashHistory } from "history";
+import { BrowserRouter} from 'react-router-dom';
 
 export const AuthContext = createContext(undefined)
 class App extends Component {

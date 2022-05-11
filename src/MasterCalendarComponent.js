@@ -5,9 +5,11 @@ const MasterCalendar = (props) =>{
     const [selectedDate, setDate] = useState(new Date())    
     //figure out if other selectedDate matches any in reservations
     let matchingReservationsArr = []
-    props.reservations.map(res=>{
+    props.reservations.map(function(res){
         if (res.selectedDate.getTime() === selectedDate?.getTime()){
-            matchingReservationsArr.push(res)
+           return matchingReservationsArr.push(res)
+        } else {
+            return ''
         }
     })
 
@@ -26,7 +28,7 @@ const MasterCalendar = (props) =>{
 
         return TableContents
     }
-    const MatchingReservations = (props) =>{
+    const MatchingReservations = () =>{
         return(
             matchingReservationsArr.map(res=>{
                 return(
