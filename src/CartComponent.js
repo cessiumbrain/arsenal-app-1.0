@@ -5,8 +5,9 @@ import Confirmation from './ConfirmationComponent'
 
 
 const Cart = (props) =>{
-    
+
     const currentUser = useContext(AuthContext)
+    console.log(currentUser.cart)
     const navigate = useNavigate()
     const [nonrefundableCheck, setNonrefundable] = useState(false); 
     const [numberOfPeopleCheck, setNumberOfPeople] = useState(false);
@@ -38,7 +39,7 @@ const Cart = (props) =>{
             </div>
             <div id="cart-info">
                 <h1>Cart</h1>
-            <p>Date: {currentUser.cart.date.toString()}</p>
+            <p>Date: {currentUser.cart.selectedDate.toString()}</p>
             <p>First Name: {currentUser.cart.firstName}</p>
             <p>Last Name: {currentUser.cart.lastName}</p>
             <p>Number of Lanes: {currentUser.cart.numLanes}</p>

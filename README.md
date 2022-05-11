@@ -1,8 +1,7 @@
 # Arsenal App Functional Components and Hooks
 
 ## Where I left off
-- Troubleshooting reservation validation:
-All form value stored in app state onchange.  Errors stored in app state and passed back via reservationForm object in app state
+- tested for errors before navigating in res form, now set the cart component first then call the navigate function after set state synchronously 
 
 ## Bugs
 - navigation from reservation booking requires two clicks
@@ -20,6 +19,7 @@ All form value stored in app state onchange.  Errors stored in app state and pas
 ***
 
 ## Done
+- [x] fixed bug where you could key in a number larger than max in res input form with onkeyup function
 - [x] fixed bug with setting state in reservation form validation and navigating synchronously
 - [x] created profile page
 - [x] navigation and state management between reservation> cart > confirmation

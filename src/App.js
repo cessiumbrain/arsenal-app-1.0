@@ -19,20 +19,15 @@ class App extends Component {
       reservations: [...RESERVATIONS],
       //--------------------------------------->
       currentUser: {
-        // cart:{
-        //   firstName: 'Joe',
-        //   lastName: 'Iannotta',
-        //   date: new Date(),
-        //   numLanes: 2
-        // },
-        username: 'myUsername',
-        password: 'password',
-        userId: 1,
-        cart: null,
-        admin: true,
-        firstName: 'Joe',
-        lastName: 'Iannotta',
-        confirmationPage: false
+
+        // username: 'myUsername',
+        // password: 'password',
+        // userId: 1,
+        // cart: null,
+        // admin: true,
+        // firstName: 'Joe',
+        // lastName: 'Iannotta',
+        // confirmationPage: false
       },
       errors:{
         loginError: null,
@@ -41,11 +36,6 @@ class App extends Component {
       },
       //Reservation Form--------------------------->
       reservationForm:{
-        selectedDate: null,
-        customerFirstName: null,
-        customerLastName: null,
-        numLanes: null,
-
         errors:{
           numLanes: null,
           customerFirstName: null,
@@ -147,7 +137,7 @@ class App extends Component {
         ...this.state.reservationForm,
         customerFirstName: e.target.value
       }
-    }, ()=>{console.log(this.state.reservationForm.customerFirstName)})
+    })
   }
   if(e.target.id==='customer-last-name'){
     this.setState({
@@ -161,7 +151,7 @@ class App extends Component {
     this.setState({
         reservationForm:{
           ...this.state.reservationForm,
-          resFormNumLanes: e.target.value
+          numLanes: e.target.value
         }
         
     }, ()=>{console.log(this.state.reservationForm)})
@@ -173,7 +163,7 @@ class App extends Component {
       ...this.state.reservationForm,
       selectedDate: e
     }    
-  }, ()=>{console.log(this.state.reservationForm.resFormSelectedDate)})
+  })
   }
   validateReservation=(navigateFunction)=>{
 
@@ -193,6 +183,8 @@ class App extends Component {
   //run if checks and set errorObj values accordingly
   if(!this.state.reservationForm.selectedDate){
     errorObj.selectedDate = 'please select a date ';
+  } else {
+    errorObj.selectedDate =null
   }
    if(!this.state.reservationForm.customerFirstName){
     errorObj.firstName = 'no first name'
@@ -208,7 +200,6 @@ class App extends Component {
      errorObj.numLanes = "please enter a number of lanes"
    }
 
-
    this.setState({
     reservationForm: {
       ...this.state.reservationForm,
@@ -217,8 +208,17 @@ class App extends Component {
       }
     }
    }, ()=>{
-     if(!errorObj.firstName){
-       navigateFunction()
+     console.log(Object.values(errorObj).every(item=>item===null))
+     if(Object.values(errorObj).every(item=>item===null)){
+       this.setState({
+         currentUser: {
+           ...this.state.currentUser,
+           cart:{
+             ...this.state.reservationForm
+           }
+         }
+       }, ()=>{navigateFunction()})
+       
      }
    })
   }

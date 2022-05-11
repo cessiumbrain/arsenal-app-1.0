@@ -41,7 +41,6 @@ const Reservation = (props)=>{
         }
     }
     //<-------------------------return statement---------------------->
-    console.log(props)
     return(
         <div id="reservation-component">
             <h1>Reservation</h1>
